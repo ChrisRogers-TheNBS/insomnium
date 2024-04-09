@@ -601,7 +601,7 @@ describe('_fixDBShape()', () => {
     expect((await models.apiSpec.getByParentId(w3._id))?.fileName).toBe('Unique name'); // should not fix
   });
 
-  it('fixes old git uris', async () => {
+  it('should not modify git uris', async () => {
     const oldRepoWithSuffix = await models.gitRepository.create({
       uri: 'https://github.com/foo/bar.git',
       uriNeedsMigration: true,
@@ -625,7 +625,7 @@ describe('_fixDBShape()', () => {
     );
     expect(await db.get(models.gitRepository.type, oldRepoWithoutSuffix._id)).toEqual(
       expect.objectContaining({
-        uri: 'https://github.com/foo/bar.git',
+        uri: 'https://github.com/foo/bar',
         uriNeedsMigration: false,
       }),
     );

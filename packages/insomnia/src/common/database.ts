@@ -848,11 +848,7 @@ async function _fixOldGitURIs(doc: GitRepository) {
     return;
   }
 
-  if (!doc.uri.endsWith('.git')) {
-    doc.uri += '.git';
-  }
-
   doc.uriNeedsMigration = false;
   await database.update(doc);
-  console.log(`[fix] Fixed git URI for ${doc._id}`);
+  console.log(`[fix] Would have fixed git URI for ${doc._id}`);
 }

@@ -32,7 +32,6 @@ import parseGitPath from '../../sync/git/parse-git-path';
 import { routableFSClient } from '../../sync/git/routable-fs-client';
 import { shallowClone } from '../../sync/git/shallow-clone';
 import {
-  addDotGit,
   getOauth2FormatName,
 } from '../../sync/git/utils';
 import { guard } from '../../utils/guard';
@@ -404,7 +403,7 @@ export const cloneGitRepoAction: ActionFunction = async ({
   }
 
   repoSettingsPatch.needsFullClone = true;
-  repoSettingsPatch.uri = addDotGit(repoSettingsPatch.uri);
+  repoSettingsPatch.uri = repoSettingsPatch.uri;
   const fsClient = MemClient.createClient();
 
   const providerName = getOauth2FormatName(repoSettingsPatch.credentials);

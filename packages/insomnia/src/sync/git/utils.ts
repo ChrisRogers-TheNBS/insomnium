@@ -5,8 +5,6 @@ import type { GitCredentials } from './git-vcs';
 import { getAccessToken as getGitHubAccessToken } from './github-oauth-provider';
 import { getAccessToken as getGitlabAccessToken, refreshToken as refreshGitlabToken } from './gitlab-oauth-provider';
 
-export const addDotGit = (url: string): string => (url.endsWith('.git') ? url : `${url}.git`);
-
 const onMessage: MessageCallback = message => {
   console.log(`[git-event] ${message}`);
 };
